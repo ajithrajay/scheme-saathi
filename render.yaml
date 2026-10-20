@@ -1,0 +1,23 @@
+# Free pilot configuration. See DEPLOY.md before uploading real documents.
+services:
+  - type: web
+    name: schemesaathi
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /healthz
+    autoDeployTrigger: "off"
+    envVars:
+      - key: SCHEMESAATHI_MODE
+        value: cloud
+      - key: SCHEMESAATHI_HEADLESS
+        value: "1"
+      - key: SCHEMESAATHI_MAX_BROWSERS
+        value: "1"
+      - key: SCHEMESAATHI_OWNER_KEY
+        generateValue: true
+      - key: SCHEMESAATHI_ENCRYPTION_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false

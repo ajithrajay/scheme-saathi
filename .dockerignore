@@ -1,0 +1,14 @@
+.git
+.env
+.env.*
+!.env.example
+.venv
+runtime
+node_modules
+**/node_modules
+**/__pycache__
+.pytest_cache
+tests
+docs
+*.zip
+*.bat

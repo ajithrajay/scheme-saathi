@@ -1,0 +1,24 @@
+<!doctype html><meta charset="utf-8"><title>LOCAL TEST FIXTURE — NOT A GOVERNMENT APPLICATION</title>
+<h1>Fictional adapter test</h1><form id="kitRegForm">
+<input id="aadhaar_no"><input id="benificiary_name"><input id="relation_name">
+<select id="gender"><option value="-1">Gender</option><option value="1">ஆண் / Male</option><option value="2">பெண் / Female</option></select>
+<select id="social_status"><option value="-1">Category</option><option value="3">பொது / General</option></select>
+<input id="phoneNumber"><select id="checkLocality"><option value="-1">Area</option><option value="1">நகர்ப்புறம் / Urban</option><option value="2">கிராமப்புறம் / Rural</option></select>
+<select id="dist_id"><option value="-1">District</option><option value="32">சென்னை / Chennai</option></select>
+<select id="block_id"><option value="-1">Block</option></select>
+<select id="village_id"><option value="-1">Village</option></select>
+<input type="checkbox" data-select-id="fruitKitReqQty"><select id="fruitKitReqQty"><option value="-1">Quantity</option><option value="1">1 தொகுப்பு</option></select>
+<input type="checkbox" data-select-id="vegKitReqQty"><select id="vegKitReqQty"><option value="-1">Quantity</option><option value="1">1 தொகுப்பு</option></select>
+<input type="checkbox" data-select-id="pulsesKitReqQty"><select id="pulsesKitReqQty"><option value="-1">Quantity</option><option value="1">1 தொகுப்பு</option></select>
+<select id="terraceKitReqQty"><option value="-1">Quantity</option><option value="1">1</option></select>
+<select id="type2FruitKitReqQty"><option value="-1">Quantity</option><option value="1">1</option></select>
+<textarea id="address"></textarea><input id="pincode"><input id="beneficiary_image" type="file">
+<button id="btnSubmit" type="submit">சமர்ப்பிக்கவும் / Submit</button></form>
+<script>
+let submissions = 0;
+document.querySelector('#checkLocality').onchange = e => document.querySelector('#village_id').style.display = e.target.value==='1'?'none':'';
+document.querySelector('#dist_id').onchange=()=>setTimeout(()=>document.querySelector('#block_id').innerHTML='<option value="-1">Block</option><option value="394">அண்ணா நகர் / Anna nagar</option>',200);
+document.querySelector('#block_id').onchange=()=>setTimeout(()=>document.querySelector('#village_id').innerHTML='<option value="-1">Village</option><option value="10">மாதிரி / Fixture Village</option>',200);
+document.querySelectorAll('[data-select-id]').forEach(c=>c.onchange=()=>{document.querySelectorAll('[data-select-id]').forEach(other=>{if(other!==c){other.checked=false;document.getElementById(other.dataset.selectId).value='-1'}})});
+document.querySelector('form').onsubmit=e=>{e.preventDefault();submissions++;if(document.querySelector('#benificiary_name').value!=='Fixture Applicant'||document.querySelector('#beneficiary_image').files.length!==1||document.querySelector('#block_id').value!=='394'||document.querySelector('#vegKitReqQty').value!=='1'){document.body.innerHTML='Invalid fixture input';return}document.body.innerHTML='<h1>Application submitted successfully</h1><p>Application Number: FIXTURE-KIT-000001</p>'};
+</script>

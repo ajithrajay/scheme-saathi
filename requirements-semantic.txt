@@ -1,0 +1,2 @@
+# Optional: model downloads require several GB and are not needed for the demo.
+sentence-transformers>=5,<6

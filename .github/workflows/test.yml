@@ -1,0 +1,32 @@
+name: Verify
+on: [push, pull_request]
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: saathi_test
+          POSTGRES_USER: saathi
+          POSTGRES_PASSWORD: test-only-password
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U saathi -d saathi_test"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      TEST_DATABASE_URL: postgresql://saathi:test-only-password@localhost:5432/saathi_test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: pip install -r requirements-dev.txt
+      - run: python -m playwright install --with-deps chromium --only-shell
+      - run: npm ci && npm run build
+        working-directory: frontend
+      - run: python -m pytest tests/test_cloud.py tests/test_postgres.py tests/test_remote_browser.py tests/test_api.py tests/test_browser_e2e.py -q
+      - run: docker build -t schemesaathi:test .

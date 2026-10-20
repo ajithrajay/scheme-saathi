@@ -1,0 +1,93 @@
+[
+  {
+    "id": "study_certificate",
+    "name": "School study certificate",
+    "name_ta": "School study certificate",
+    "filename": "DEMO_ONLY_study_certificate.pdf",
+    "mime_type": "application/pdf"
+  },
+  {
+    "id": "admission_proof",
+    "name": "Admission proof",
+    "name_ta": "Admission proof",
+    "filename": "DEMO_ONLY_admission_proof.pdf",
+    "mime_type": "application/pdf"
+  },
+  {
+    "id": "income_certificate",
+    "name": "Income certificate",
+    "name_ta": "Income certificate",
+    "filename": "DEMO_ONLY_income_certificate.pdf",
+    "mime_type": "application/pdf"
+  },
+  {
+    "id": "community_certificate",
+    "name": "Community certificate",
+    "name_ta": "Community certificate",
+    "filename": "DEMO_ONLY_community_certificate.pdf",
+    "mime_type": "application/pdf"
+  },
+  {
+    "id": "bank_passbook",
+    "name": "Bank passbook",
+    "name_ta": "Bank passbook",
+    "filename": "DEMO_ONLY_bank_passbook.pdf",
+    "mime_type": "application/pdf"
+  },
+  {
+    "id": "aadhaar_document",
+    "name": "Aadhaar document",
+    "name_ta": "Aadhaar document",
+    "filename": "DEMO_ONLY_aadhaar_document.pdf",
+    "mime_type": "application/pdf"
+  },
+  {
+    "id": "marksheet",
+    "name": "Class VII marksheet",
+    "name_ta": "Class VII marksheet",
+    "filename": "DEMO_ONLY_marksheet.pdf",
+    "mime_type": "application/pdf"
+  },
+  {
+    "id": "selection_certificate",
+    "name": "State selection evidence",
+    "name_ta": "State selection evidence",
+    "filename": "DEMO_ONLY_selection_certificate.pdf",
+    "mime_type": "application/pdf"
+  },
+  {
+    "id": "occupation_certificate",
+    "name": "Occupation proof",
+    "name_ta": "Occupation proof",
+    "filename": "DEMO_ONLY_occupation_certificate.pdf",
+    "mime_type": "application/pdf"
+  },
+  {
+    "id": "identity_proof",
+    "name": "Identity proof",
+    "name_ta": "Identity proof",
+    "filename": "DEMO_ONLY_identity_proof.pdf",
+    "mime_type": "application/pdf"
+  },
+  {
+    "id": "ration_card",
+    "name": "Ration card",
+    "name_ta": "Ration card",
+    "filename": "DEMO_ONLY_ration_card.pdf",
+    "mime_type": "application/pdf"
+  },
+  {
+    "id": "nominee_proof",
+    "name": "Nominee relationship proof",
+    "name_ta": "Nominee relationship proof",
+    "filename": "DEMO_ONLY_nominee_proof.pdf",
+    "mime_type": "application/pdf"
+  },
+  {
+    "id": "beneficiary_photo",
+    "name": "Beneficiary photo placeholder",
+    "name_ta": "Demo photo",
+    "filename": "DEMO_ONLY_beneficiary_photo.png",
+    "mime_type": "image/png"
+  }
+]

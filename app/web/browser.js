@@ -1,0 +1,14 @@
+const id=new URLSearchParams(location.search).get('job');
+const image=document.querySelector('#screen'),status=document.querySelector('#status');
+let imageUrl='',pending=false,enabled=false,officialDemo=false;
+async function request(path,body){const r=await fetch('/api/browser/'+encodeURIComponent(id)+'/'+path,{credentials:'same-origin',cache:'no-store',method:body?'POST':'GET',headers:body?{'Content-Type':'application/json','X-Saathi-Request':'1'}:{},body:body?JSON.stringify(body):undefined});if(r.status===401){location.replace('/login');throw Error('Sign in again');}if(!r.ok){const d=await r.json();throw Error(d.detail||'Browser unavailable');}return r;}
+async function refresh(){if(pending||document.hidden)return;pending=true;try{const state=await(await request('state')).json();officialDemo=!!state.official_demo;enabled=['LOGIN_REQUIRED','VERIFICATION_REQUIRED'].includes(state.status);document.querySelector('#hostname').textContent=state.host;status.textContent=state.status.replaceAll('_',' ')+(officialDemo?' · Demo: scroll to review; submission disabled.':state.auto_resume?' · Automatic continuation is active.':' · Return to Applications and use Resume after verification.');const blob=await(await request('frame')).blob();const old=imageUrl;imageUrl=URL.createObjectURL(blob);image.src=imageUrl;image.hidden=false;if(old)URL.revokeObjectURL(old);}catch(e){status.textContent=e.message;enabled=false;image.hidden=true;}finally{pending=false;}}
+let actions=Promise.resolve();
+function action(body){const next=actions.then(async()=>{while(pending)await new Promise(r=>setTimeout(r,50));if(!enabled&&!(officialDemo&&body.action==='scroll')){status.textContent='Controls are available only while login or verification is required.';return false;}pending=true;let ok=false;try{await request('action',body);ok=true;}catch(e){status.textContent=e.message;}finally{pending=false;}if(ok)await refresh();return ok;});actions=next.catch(()=>{});return next;}
+image.addEventListener('click',e=>{const r=image.getBoundingClientRect();action({action:'click',x:(e.clientX-r.left)*1200/r.width,y:(e.clientY-r.top)*850/r.height});});
+document.querySelector('#text-form').addEventListener('submit',async e=>{e.preventDefault();const field=document.querySelector('#text'),text=field.value;const sent=await action({action:'text',text});if(sent)field.value='';});
+document.querySelectorAll('[data-key]').forEach(b=>b.addEventListener('click',()=>action({action:'key',key:b.dataset.key})));
+document.querySelectorAll('[data-scroll]').forEach(b=>b.addEventListener('click',()=>action({action:'scroll',delta:Number(b.dataset.scroll)})));
+document.querySelector('#refresh').addEventListener('click',refresh);
+if(id){refresh();setInterval(refresh,2500);}else{status.textContent='Open this view from an application.';}
+window.addEventListener('pagehide',()=>{if(imageUrl)URL.revokeObjectURL(imageUrl);document.querySelector('#text').value='';});

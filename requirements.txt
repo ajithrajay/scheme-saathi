@@ -1,0 +1,13 @@
+fastapi==0.141.1
+uvicorn==0.54.0
+httpx[socks]==0.28.1
+pydantic==2.13.5
+python-multipart==0.0.32
+python-dotenv==1.2.3
+langgraph==1.2.12
+playwright==1.56.0
+beautifulsoup4==4.15.0
+pypdf==6.10.0
+cryptography==46.0.0
+
+psycopg[binary]==3.2.13

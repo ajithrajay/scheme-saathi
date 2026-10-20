@@ -1,0 +1,546 @@
+{
+  "sources": [
+    {
+      "id": "tn-tils-20260929",
+      "title": "Tamil Nadu Institute of Labour Studies — Government Schemes",
+      "url": "https://tils.tn.gov.in/schemes",
+      "section": "Government Schemes: Pudhumai Penn / Tamil Pudhalvan",
+      "checked_at": "2026-09-29",
+      "published_at": null,
+      "effective_from": null,
+      "snapshot_kind": "reviewed_paraphrase",
+      "text": "The institute describes monthly assistance of INR 1,000 for women under Pudhumai Penn and men under Tamil Pudhalvan. It lists continuous schooling from classes 6 to 12 in government schools or Tamil-medium government-aided schools, followed by higher education. It directs applicants to UMIS with institute assistance. Its document list includes school study evidence, community and income certificates, bank passbook, Aadhaar and admission proof. This institutional summary is not a complete set of governing orders or course exclusions."
+    },
+    {
+      "id": "nmms-moe-2025",
+      "title": "Ministry of Education — NMMSS application and verification guidance",
+      "url": "https://dsel.education.gov.in/sites/default/files/update/PIB2140874.pdf",
+      "section": "Eligibility and NSP workflow",
+      "checked_at": "2026-09-29",
+      "published_at": null,
+      "effective_from": null,
+      "snapshot_kind": "reviewed_paraphrase",
+      "text": "The Ministry describes NMMSS for meritorious school pupils, with parental annual income up to INR 350,000 and a minimum of 55 percent in class VII, relaxed by five percentage points for SC/ST applicants. State or UT selection and the applicable school conditions must also be met. Applications and verification use the National Scholarship Portal. The initial rules here cover income and prior marks only; school exclusions, selection requirements, renewal and current-year instructions require complete review."
+    },
+    {
+      "id": "nsp-20260929",
+      "title": "National Scholarship Portal — student application route",
+      "url": "https://scholarships.gov.in/",
+      "section": "Students / One Time Registration",
+      "checked_at": "2026-09-29",
+      "published_at": null,
+      "effective_from": null,
+      "snapshot_kind": "reviewed_paraphrase",
+      "text": "NSP requires an OTR identifier for scholarship applications. Registration may require identity and face-authentication steps. Overall portal availability is not evidence that a particular scholarship application window is open. Follow the current scheme-specific deadline and institution verification instructions."
+    },
+    {
+      "id": "demo-policy-v1",
+      "title": "Fictional education grant — browser test fixture",
+      "url": null,
+      "section": "Fixture policy 1.0",
+      "checked_at": "2026-09-29",
+      "snapshot_kind": "synthetic",
+      "text": "This is not a government scheme. The fictional grant accepts Tamil Nadu residents aged 18 through 30 inclusive whose annual household income is at most INR 250,000 and who are enrolled in higher education. A study certificate is required. The test form has profile, document and final-submission pages."
+    }
+  ],
+  "schemes": [
+    {
+      "id": "pudhumai-penn",
+      "name": "Pudhumai Penn",
+      "name_ta": "புதுமைப் பெண்",
+      "category": "Higher education",
+      "jurisdiction": "Tamil Nadu",
+      "benefit": "₹1,000 / month as described by the institute",
+      "description": "Higher education support with government-school eligibility conditions.",
+      "source_ids": [
+        "tn-tils-20260929"
+      ],
+      "rule": {
+        "id": "pudhumai-penn-all",
+        "op": "ALL",
+        "children": [
+          {
+            "id": "pudhumai-penn-gender",
+            "field": "gender",
+            "op": "eq",
+            "value": "female",
+            "label": "Student category specified by the scheme",
+            "label_ta": "திட்டத்தில் குறிப்பிடப்பட்ட மாணவர் பிரிவு",
+            "source_id": "tn-tils-20260929",
+            "source_section": "Eligibility"
+          },
+          {
+            "id": "pudhumai-penn-schooling",
+            "field": "studied_6_to_12_continuously",
+            "op": "eq",
+            "value": true,
+            "label": "Continuous schooling from classes 6 to 12",
+            "label_ta": "6 முதல் 12ஆம் வகுப்பு வரை தொடர்ந்து படித்தல்",
+            "source_id": "tn-tils-20260929",
+            "source_section": "Eligibility"
+          },
+          {
+            "id": "pudhumai-penn-school",
+            "op": "ANY",
+            "children": [
+              {
+                "id": "pudhumai-penn-government",
+                "field": "school_type",
+                "op": "eq",
+                "value": "government",
+                "label": "Government school",
+                "label_ta": "அரசுப் பள்ளி",
+                "source_id": "tn-tils-20260929",
+                "source_section": "Eligibility"
+              },
+              {
+                "id": "pudhumai-penn-aided",
+                "op": "ALL",
+                "children": [
+                  {
+                    "id": "pudhumai-penn-aided-type",
+                    "field": "school_type",
+                    "op": "eq",
+                    "value": "government_aided",
+                    "label": "Government-aided school",
+                    "label_ta": "அரசு உதவிபெறும் பள்ளி",
+                    "source_id": "tn-tils-20260929",
+                    "source_section": "Eligibility"
+                  },
+                  {
+                    "id": "pudhumai-penn-tamil",
+                    "field": "school_medium",
+                    "op": "eq",
+                    "value": "Tamil",
+                    "label": "Tamil medium",
+                    "label_ta": "தமிழ் வழி",
+                    "source_id": "tn-tils-20260929",
+                    "source_section": "Eligibility"
+                  }
+                ],
+                "label": "Eligibility requirements",
+                "label_ta": "தகுதி விதிகள்"
+              }
+            ],
+            "label": "Eligibility requirements",
+            "label_ta": "தகுதி விதிகள்"
+          },
+          {
+            "id": "pudhumai-penn-higher",
+            "field": "higher_education_enrolled",
+            "op": "eq",
+            "value": true,
+            "label": "Enrolled in higher education",
+            "label_ta": "உயர்கல்வியில் சேர்ந்திருத்தல்",
+            "source_id": "tn-tils-20260929",
+            "source_section": "Eligibility"
+          }
+        ],
+        "label": "Eligibility requirements",
+        "label_ta": "தகுதி விதிகள்"
+      },
+      "rule_version": "draft-2026.09.29",
+      "coverage_complete": false,
+      "review_status": "DRAFT",
+      "review_valid_until": null,
+      "policy_changed": false,
+      "window_status": "UNKNOWN",
+      "window_start": null,
+      "window_end": null,
+      "documents": [
+        {
+          "id": "study_certificate",
+          "name": "School study certificate",
+          "name_ta": "பள்ளிப் படிப்புச் சான்று",
+          "issuing_url": null
+        },
+        {
+          "id": "admission_proof",
+          "name": "Admission proof",
+          "name_ta": "சேர்க்கைச் சான்று",
+          "issuing_url": null
+        },
+        {
+          "id": "income_certificate",
+          "name": "Income certificate",
+          "name_ta": "வருமானச் சான்று",
+          "issuing_url": "https://www.tnesevai.tn.gov.in/citizen/"
+        },
+        {
+          "id": "community_certificate",
+          "name": "Community certificate",
+          "name_ta": "சமூகச் சான்று",
+          "issuing_url": "https://www.tnesevai.tn.gov.in/citizen/"
+        },
+        {
+          "id": "bank_passbook",
+          "name": "Bank passbook",
+          "name_ta": "வங்கி கணக்கு புத்தகம்",
+          "issuing_url": null
+        },
+        {
+          "id": "aadhaar_document",
+          "name": "Aadhaar document",
+          "name_ta": "ஆதார் ஆவணம்",
+          "issuing_url": null
+        }
+      ],
+      "portal_url": "https://umis.tn.gov.in/auth/login",
+      "allowed_hosts": [
+        "umis.tn.gov.in"
+      ],
+      "application_route": "UMIS student portal; institution verification may be required.",
+      "is_demo": false
+    },
+    {
+      "id": "tamil-pudhalvan",
+      "name": "Tamil Pudhalvan",
+      "name_ta": "தமிழ் புதல்வன்",
+      "category": "Higher education",
+      "jurisdiction": "Tamil Nadu",
+      "benefit": "₹1,000 / month as described by the institute",
+      "description": "Higher education support with government-school eligibility conditions.",
+      "source_ids": [
+        "tn-tils-20260929"
+      ],
+      "rule": {
+        "id": "tamil-pudhalvan-all",
+        "op": "ALL",
+        "children": [
+          {
+            "id": "tamil-pudhalvan-gender",
+            "field": "gender",
+            "op": "eq",
+            "value": "male",
+            "label": "Student category specified by the scheme",
+            "label_ta": "திட்டத்தில் குறிப்பிடப்பட்ட மாணவர் பிரிவு",
+            "source_id": "tn-tils-20260929",
+            "source_section": "Eligibility"
+          },
+          {
+            "id": "tamil-pudhalvan-schooling",
+            "field": "studied_6_to_12_continuously",
+            "op": "eq",
+            "value": true,
+            "label": "Continuous schooling from classes 6 to 12",
+            "label_ta": "6 முதல் 12ஆம் வகுப்பு வரை தொடர்ந்து படித்தல்",
+            "source_id": "tn-tils-20260929",
+            "source_section": "Eligibility"
+          },
+          {
+            "id": "tamil-pudhalvan-school",
+            "op": "ANY",
+            "children": [
+              {
+                "id": "tamil-pudhalvan-government",
+                "field": "school_type",
+                "op": "eq",
+                "value": "government",
+                "label": "Government school",
+                "label_ta": "அரசுப் பள்ளி",
+                "source_id": "tn-tils-20260929",
+                "source_section": "Eligibility"
+              },
+              {
+                "id": "tamil-pudhalvan-aided",
+                "op": "ALL",
+                "children": [
+                  {
+                    "id": "tamil-pudhalvan-aided-type",
+                    "field": "school_type",
+                    "op": "eq",
+                    "value": "government_aided",
+                    "label": "Government-aided school",
+                    "label_ta": "அரசு உதவிபெறும் பள்ளி",
+                    "source_id": "tn-tils-20260929",
+                    "source_section": "Eligibility"
+                  },
+                  {
+                    "id": "tamil-pudhalvan-tamil",
+                    "field": "school_medium",
+                    "op": "eq",
+                    "value": "Tamil",
+                    "label": "Tamil medium",
+                    "label_ta": "தமிழ் வழி",
+                    "source_id": "tn-tils-20260929",
+                    "source_section": "Eligibility"
+                  }
+                ],
+                "label": "Eligibility requirements",
+                "label_ta": "தகுதி விதிகள்"
+              }
+            ],
+            "label": "Eligibility requirements",
+            "label_ta": "தகுதி விதிகள்"
+          },
+          {
+            "id": "tamil-pudhalvan-higher",
+            "field": "higher_education_enrolled",
+            "op": "eq",
+            "value": true,
+            "label": "Enrolled in higher education",
+            "label_ta": "உயர்கல்வியில் சேர்ந்திருத்தல்",
+            "source_id": "tn-tils-20260929",
+            "source_section": "Eligibility"
+          }
+        ],
+        "label": "Eligibility requirements",
+        "label_ta": "தகுதி விதிகள்"
+      },
+      "rule_version": "draft-2026.09.29",
+      "coverage_complete": false,
+      "review_status": "DRAFT",
+      "review_valid_until": null,
+      "policy_changed": false,
+      "window_status": "UNKNOWN",
+      "window_start": null,
+      "window_end": null,
+      "documents": [
+        {
+          "id": "study_certificate",
+          "name": "School study certificate",
+          "name_ta": "பள்ளிப் படிப்புச் சான்று",
+          "issuing_url": null
+        },
+        {
+          "id": "admission_proof",
+          "name": "Admission proof",
+          "name_ta": "சேர்க்கைச் சான்று",
+          "issuing_url": null
+        },
+        {
+          "id": "income_certificate",
+          "name": "Income certificate",
+          "name_ta": "வருமானச் சான்று",
+          "issuing_url": "https://www.tnesevai.tn.gov.in/citizen/"
+        },
+        {
+          "id": "community_certificate",
+          "name": "Community certificate",
+          "name_ta": "சமூகச் சான்று",
+          "issuing_url": "https://www.tnesevai.tn.gov.in/citizen/"
+        },
+        {
+          "id": "bank_passbook",
+          "name": "Bank passbook",
+          "name_ta": "வங்கி கணக்கு புத்தகம்",
+          "issuing_url": null
+        },
+        {
+          "id": "aadhaar_document",
+          "name": "Aadhaar document",
+          "name_ta": "ஆதார் ஆவணம்",
+          "issuing_url": null
+        }
+      ],
+      "portal_url": "https://umis.tn.gov.in/auth/login",
+      "allowed_hosts": [
+        "umis.tn.gov.in"
+      ],
+      "application_route": "UMIS student portal; institution verification may be required.",
+      "is_demo": false
+    },
+    {
+      "id": "nmmss",
+      "name": "National Means-cum-Merit Scholarship",
+      "name_ta": "தேசிய வருவாய் வழி மற்றும் திறன் படிப்புதவித் தொகை",
+      "category": "School education",
+      "jurisdiction": "India",
+      "benefit": "See current official scheme award and renewal conditions",
+      "description": "School scholarship: preliminary income and marks screening.",
+      "source_ids": [
+        "nmms-moe-2025",
+        "nsp-20260929"
+      ],
+      "rule": {
+        "id": "nmms-all",
+        "op": "ALL",
+        "children": [
+          {
+            "id": "nmms-income",
+            "field": "annual_household_income_inr",
+            "op": "lte",
+            "value": 350000,
+            "label": "Annual parental income up to ₹3,50,000",
+            "label_ta": "ஆண்டு பெற்றோர் வருமானம் ₹3,50,000 வரை",
+            "source_id": "nmms-moe-2025",
+            "source_section": "Eligibility"
+          },
+          {
+            "id": "nmms-marks",
+            "op": "ANY",
+            "children": [
+              {
+                "id": "nmms-standard-marks",
+                "field": "class_7_percentage",
+                "op": "gte",
+                "value": 55,
+                "label": "At least 55% in class VII",
+                "label_ta": "7ஆம் வகுப்பில் குறைந்தது 55%",
+                "source_id": "nmms-moe-2025",
+                "source_section": "Eligibility"
+              },
+              {
+                "id": "nmms-relaxed",
+                "op": "ALL",
+                "children": [
+                  {
+                    "id": "nmms-category",
+                    "field": "category",
+                    "op": "in",
+                    "value": [
+                      "SC",
+                      "ST"
+                    ],
+                    "label": "SC/ST relaxation category",
+                    "label_ta": "SC/ST தளர்வுப் பிரிவு",
+                    "source_id": "nmms-moe-2025",
+                    "source_section": "Eligibility"
+                  },
+                  {
+                    "id": "nmms-relaxed-marks",
+                    "field": "class_7_percentage",
+                    "op": "gte",
+                    "value": 50,
+                    "label": "At least 50% for SC/ST",
+                    "label_ta": "SC/ST பிரிவுக்கு குறைந்தது 50%",
+                    "source_id": "nmms-moe-2025",
+                    "source_section": "Eligibility"
+                  }
+                ],
+                "label": "Eligibility requirements",
+                "label_ta": "தகுதி விதிகள்"
+              }
+            ],
+            "label": "Eligibility requirements",
+            "label_ta": "தகுதி விதிகள்"
+          }
+        ],
+        "label": "Eligibility requirements",
+        "label_ta": "தகுதி விதிகள்"
+      },
+      "rule_version": "draft-2026.09.29",
+      "coverage_complete": false,
+      "review_status": "DRAFT",
+      "review_valid_until": null,
+      "policy_changed": false,
+      "window_status": "OPEN",
+      "window_start": "2026-06-01",
+      "window_end": "2026-10-31",
+      "documents": [
+        {
+          "id": "income_certificate",
+          "name": "Income certificate",
+          "name_ta": "வருமானச் சான்று",
+          "issuing_url": "https://www.tnesevai.tn.gov.in/citizen/"
+        },
+        {
+          "id": "marksheet",
+          "name": "Class VII marksheet",
+          "name_ta": "7ஆம் வகுப்பு மதிப்பெண் சான்று",
+          "issuing_url": null
+        },
+        {
+          "id": "selection_certificate",
+          "name": "State selection evidence",
+          "name_ta": "மாநிலத் தேர்வு சான்று",
+          "issuing_url": null
+        }
+      ],
+      "portal_url": "https://scholarships.gov.in/ApplicationForm/",
+      "allowed_hosts": [
+        "scholarships.gov.in",
+        "nsp.gov.in"
+      ],
+      "application_route": "NSP scholarship application login. Use your OTR ID and password; complete portal verification, then resume.",
+      "is_demo": false,
+      "window_evidence_url": "https://scholarships.gov.in/All-Scholarships",
+      "window_checked_at": "2026-10-04"
+    },
+    {
+      "id": "demo-education-grant",
+      "name": "Practice Education Grant",
+      "name_ta": "பயிற்சி கல்வி உதவித்தொகை",
+      "category": "Test scheme",
+      "jurisdiction": "Tamil Nadu",
+      "benefit": "Fictional ₹12,000 grant — no real benefit",
+      "description": "Use this fictional scheme to test the full workflow.",
+      "source_ids": [
+        "demo-policy-v1"
+      ],
+      "rule": {
+        "id": "demo-all",
+        "op": "ALL",
+        "children": [
+          {
+            "id": "demo-state",
+            "field": "state",
+            "op": "eq",
+            "value": "Tamil Nadu",
+            "label": "Tamil Nadu resident",
+            "label_ta": "தமிழ்நாடு குடியிருப்பாளர்",
+            "source_id": "demo-policy-v1",
+            "source_section": "Eligibility"
+          },
+          {
+            "id": "demo-age",
+            "field": "age",
+            "op": "between",
+            "value": [
+              18,
+              30
+            ],
+            "label": "Age from 18 to 30",
+            "label_ta": "18 முதல் 30 வயது வரை",
+            "source_id": "demo-policy-v1",
+            "source_section": "Eligibility"
+          },
+          {
+            "id": "demo-income",
+            "field": "annual_household_income_inr",
+            "op": "lte",
+            "value": 250000,
+            "label": "Annual family income up to ₹2,50,000",
+            "label_ta": "ஆண்டு குடும்ப வருமானம் ₹2,50,000 வரை",
+            "source_id": "demo-policy-v1",
+            "source_section": "Eligibility"
+          },
+          {
+            "id": "demo-enrolled",
+            "field": "higher_education_enrolled",
+            "op": "eq",
+            "value": true,
+            "label": "Enrolled in higher education",
+            "label_ta": "உயர்கல்வியில் சேர்ந்திருத்தல்",
+            "source_id": "demo-policy-v1",
+            "source_section": "Eligibility"
+          }
+        ],
+        "label": "Eligibility requirements",
+        "label_ta": "தகுதி விதிகள்"
+      },
+      "rule_version": "fixture-1.0",
+      "coverage_complete": true,
+      "review_status": "REVIEWED",
+      "review_valid_until": "2099-12-31",
+      "policy_changed": false,
+      "window_status": "OPEN",
+      "window_start": "2020-01-01",
+      "window_end": "2099-12-31",
+      "documents": [
+        {
+          "id": "study_certificate",
+          "name": "School study certificate",
+          "name_ta": "பள்ளிப் படிப்புச் சான்று",
+          "issuing_url": null
+        }
+      ],
+      "portal_url": "/demo/portal",
+      "allowed_hosts": [
+        "127.0.0.1"
+      ],
+      "application_route": "Local test portal only. It does not contact a government service.",
+      "is_demo": true
+    }
+  ]
+}
